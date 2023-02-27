@@ -28,14 +28,150 @@
       </a>
     </div>
     <div class="header-action">
-      <button class="quit-btn btn" type="button">Выйти</button>
+      <button class="quit-btn btn" id="quit-btn" type="button" (click)="logOut()">Выйти</button>
     </div>
   </div>
 </header>
 
 <section class="main">
-  <div class="popup-container">
-    <div class="login-popup popup">
+
+  <div class="department-info-container">
+  </div>
+
+  <div class="employee-info-popup info-popup">
+    <div class="close-btn" (click)="closePersonInfo()">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="2.64645" y1="17.1551" x2="17.1551" y2="2.64644" stroke="black"/>
+        <line x1="3.35355" y1="2.64645" x2="17.8622" y2="17.1551" stroke="black"/>
+      </svg>
+    </div>
+    <div class="info-popup-title employee-info-popup-title">
+      <svg class="employee-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"
+           xmlns="http://www.w3.org/2000/svg">
+        <circle cx="13" cy="13" r="12.5" stroke="black"/>
+        <path
+          d="M13 12C15.21 12 17 10.21 17 8C17 5.79 15.21 4 13 4C10.79 4 9 5.79 9 8C9 10.21 10.79 12 13 12ZM13 14C10.33 14 5 15.34 5 18V20H21V18C21 15.34 15.67 14 13 14Z"
+          fill="black"/>
+      </svg>
+      <span class="employee-name">Богданов Богдан Богданович</span>
+    </div>
+    <div class="common-info">
+      <div class="section-title">Общая информация</div>
+      <div class="section-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+      </div>
+    </div>
+    <div class="projects">
+      <div class="section-title">Проекты</div>
+      <div class="section-list">
+        <div class="section-list-item">Crowd-Testing</div>
+        <div class="section-list-item">Pet-проект на GitHub</div>
+      </div>
+    </div>
+    <div class="skills">
+      <div class="section-title">Навыки</div>
+      <div class="section-list">
+        <div class="section-list-item">HTML&JSON</div>
+        <div class="section-list-item">Agile/SCRUM/Lean</div>
+        <div class="section-list-item">GoLang&php</div>
+        <div class="section-list-item">cookie & session</div>
+        <div class="section-list-item">Microservic Arhitecture</div>
+        <div class="section-list-item">GitLab, Docker</div>
+        <div class="section-list-item">PostgreSQL</div>
+      </div>
+    </div>
+    <div class="employee-loading">
+      <div class="section-title">
+        <span>Занятость</span>
+        <svg class="edit-btn" width="10" height="11" viewBox="0 0 10 11" fill="none"
+             xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" clip-rule="evenodd"
+                d="M5.31918 0.211025C5.69419 -0.00136193 6.13821 -0.0560774 6.55356 0.0589151C6.73773 0.109901 6.89509 0.198722 7.04342 0.299045C7.1843 0.394323 7.3459 0.520471 7.53318 0.666671L7.56051 0.688003C7.74781 0.834201 7.90943 0.960347 8.03606 1.07388C8.16939 1.19342 8.29376 1.32452 8.38793 1.49079C8.60032 1.8658 8.65503 2.30982 8.54004 2.72518C8.48905 2.90934 8.40023 3.06671 8.29991 3.21504C8.20463 3.35592 8.07847 3.51753 7.93226 3.70483L4.08492 8.63362C4.0752 8.64608 4.0656 8.65839 4.05613 8.67053C3.8755 8.90213 3.73895 9.07721 3.56992 9.221C3.42684 9.34271 3.26854 9.4453 3.099 9.52619C2.89871 9.62175 2.68312 9.67488 2.39794 9.74516C2.38298 9.74885 2.36784 9.75258 2.3525 9.75637L1.20156 10.0405C1.12185 10.0602 1.03086 10.0827 0.950605 10.095C0.861138 10.1088 0.722587 10.1213 0.569567 10.0723C0.385616 10.0134 0.228666 9.89084 0.126864 9.72669C0.0421804 9.59015 0.0206328 9.45271 0.0122516 9.36259C0.00473277 9.28173 0.00446719 9.188 0.0042345 9.10589C0.00422011 9.10081 0.00420584 9.09577 0.00418998 9.09078L0.00046807 7.92041C0.000417801 7.9046 0.000361817 7.889 0.000306544 7.8736C-0.000747686 7.5799 -0.0015447 7.35785 0.0425303 7.14036C0.0798385 6.95625 0.14093 6.77779 0.224268 6.60944C0.322721 6.41056 0.459419 6.23558 0.640237 6.00413C0.649719 5.99199 0.659323 5.9797 0.669049 5.96724L4.51639 1.03845C4.66258 0.851143 4.78873 0.689528 4.90227 0.562893C5.02181 0.429562 5.1529 0.305195 5.31918 0.211025ZM6.26451 1.10297C6.12606 1.06464 5.97805 1.08288 5.85305 1.15368C5.83182 1.1657 5.79151 1.19391 5.70888 1.28607C5.62299 1.38187 5.51956 1.5139 5.3597 1.71869L7.06764 3.05188C7.2275 2.84709 7.33047 2.7147 7.40255 2.60812C7.4719 2.50558 7.48947 2.45964 7.49598 2.43612C7.53431 2.29767 7.51607 2.14967 7.44528 2.02466C7.43326 2.00343 7.40505 1.96313 7.31288 1.88049C7.21709 1.79461 7.08506 1.69117 6.88026 1.53132C6.67547 1.37146 6.54308 1.26849 6.43651 1.19641C6.33397 1.12706 6.28802 1.10948 6.26451 1.10297ZM6.40105 3.90585L4.69311 2.57266L1.52302 6.63384C1.30107 6.91818 1.23848 7.00254 1.19515 7.09006C1.15348 7.17423 1.12294 7.26347 1.10428 7.35552C1.08489 7.45123 1.08265 7.55625 1.0838 7.91696L1.08709 8.95291L2.09284 8.70461C2.44304 8.61815 2.54438 8.59049 2.63252 8.54844C2.71729 8.50799 2.79644 8.4567 2.86798 8.39584C2.94236 8.33256 3.009 8.25136 3.23096 7.96702L6.40105 3.90585ZM4.68333 9.63776C4.68333 9.3386 4.92584 9.09609 5.22499 9.09609H9.01666C9.31581 9.09609 9.55833 9.3386 9.55833 9.63776C9.55833 9.93691 9.31581 10.1794 9.01666 10.1794H5.22499C4.92584 10.1794 4.68333 9.93691 4.68333 9.63776Z"
+                fill="black"/>
+        </svg>
+      </div>
+      <table>
+        <thead>
+        <tr>
+          <td>ПРОЕКТЫ</td>
+          <td>ФАКТИЧЕСКАЯ</td>
+          <td>ПЛАНИРУЕМАЯ</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>73 всего</td>
+          <td>28 часов</td>
+          <td>43 часа</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="department-info-popup info-popup">
+    <div class="close-btn" (click)="closeDepartmentInfo()">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="2.64645" y1="17.1551" x2="17.1551" y2="2.64644" stroke="black"/>
+        <line x1="3.35355" y1="2.64645" x2="17.8622" y2="17.1551" stroke="black"/>
+      </svg>
+    </div>
+    <div class="info-popup-title department-info-popup-title">
+      <div class="department-color red"></div>
+      <div class="department-name">Отдел разработки</div>
+    </div>
+    <div class="common-info">
+      <div class="section-title">Общая информация</div>
+      <div class="section-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+        incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+        laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
+      </div>
+    </div>
+    <div class="department-heads">
+      <div class="section-title">Руководители отдела</div>
+      <div class="section-list">
+        <div class="section-list-item">Богданенко Богдан Богданович - Project manager</div>
+        <div class="section-list-item">Петренко Пётр Петрович - HR-manager</div>
+      </div>
+    </div>
+    <div class="department-members">
+      <div class="section-title">Участники</div>
+      <table>
+        <thead>
+        <tr>
+          <td>ФИО</td>
+          <td>ЗАГРУЖЕННОСТЬ</td>
+          <td>ПРОЕКТЫ</td>
+          <td>НАВЫКИ</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+          <td>Богданенко Б.Б.</td>
+          <td class="loading">
+            <div class="indicator red"></div>
+            <span>Высокая</span>
+          </td>
+          <td>28</td>
+          <td>PL\SQL, MySQL</td>
+        </tr>
+        <tr>
+          <td>Петренко П.П.</td>
+          <td class="loading">
+            <div class="indicator yellow"></div>
+            <span>Средняя</span>
+          </td>
+          <td>13</td>
+          <td>HRIS, HRM</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="popup-container" id="popup-container">
+    <div class="login-popup popup" id="log-in-popup">
       <div class="popup-title">Авторизация</div>
       <form action="">
         <div>
@@ -47,25 +183,27 @@
         <div>
           <input type="password" class="popup-input" placeholder="Пароль">
         </div>
-        <button type="button" class="popup-btn login-btn btn">Войти</button>
+        <button type="button" class="popup-btn login-btn btn" (click)="logIn()">Войти</button>
       </form>
-      <a href="#" class="forgot-pass-link">Забыли пароль?</a>
+      <a class="forgot-pass-link" (click)="forgotPass()">Забыли пароль?</a>
     </div>
 
-    <div class="recovery-popup popup">
-      <button type="button" class="back-btn btn">
+    <div class="recovery-popup popup" id="recovery-popup">
+      <button type="button" class="back-btn btn" id="back-btn" (click)="backToLogIn()">
         <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path fill-rule="evenodd" clip-rule="evenodd"
                 d="M14.6339 6.61612C15.122 7.10427 15.122 7.89573 14.6339 8.38388L9.26777 13.75H23.75C24.4404 13.75 25 14.3096 25 15C25 15.6904 24.4404 16.25 23.75 16.25H9.26777L14.6339 21.6161C15.122 22.1043 15.122 22.8957 14.6339 23.3839C14.1457 23.872 13.3543 23.872 12.8661 23.3839L5.36612 15.8839C4.87796 15.3957 4.87796 14.6043 5.36612 14.1161L12.8661 6.61612C13.3543 6.12796 14.1457 6.12796 14.6339 6.61612Z"
                 fill="#0F1729"/>
         </svg>
       </button>
-      <div class="popup-title">Восстановление</div>
+      <div class="popup-title" id="recovery-title">Восстановление</div>
       <form action="">
         <div>
-          <input type="email" class="popup-input" placeholder="E-mail">
+          <input type="email" class="popup-input" id="recover-email-input" placeholder="E-mail">
         </div>
-        <button type="button" class="popup-btn recovery-btn btn">Отправить</button>
+        <button type="button" class="popup-btn recovery-btn btn" id="send-on-email-btn" (click)="sendOnEmail()">
+          Отправить
+        </button>
       </form>
     </div>
 
@@ -81,158 +219,48 @@
         <button type="button" class="popup-btn change-pass-btn btn">Изменить</button>
       </form>
     </div>
-
-    <div class="legend-popup popup">
-      <div class="info-popup-title">Легенда</div>
-      <div class="info-popup-list">
-        <div class="list-item">
-          <div class="department-color red"></div>
-          <div class="department-name">Отдел разработки</div>
-        </div>
-        <div class="list-item">
-          <div class="department-color yellow"></div>
-          <div class="department-name">Отдел аналитики</div>
-        </div>
-        <div class="list-item">
-          <div class="department-color blue"></div>
-          <div class="department-name">Отдел пососа</div>
-        </div>
-      </div>
-    </div>
-
-    <div class="department-info-popup popup">
-      <div class="close-btn">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="2.64645" y1="17.1551" x2="17.1551" y2="2.64644" stroke="black"/>
-          <line x1="3.35355" y1="2.64645" x2="17.8622" y2="17.1551" stroke="black"/>
-        </svg>
-      </div>
-      <div class="info-popup-title department-info-popup-title">
-        <div class="department-color red"></div>
-        <div class="department-name">Отдел разработки</div>
-      </div>
-      <div class="common-info">
-        <div class="section-title">Общая информация</div>
-        <div class="section-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
-        </div>
-      </div>
-      <div class="department-heads">
-        <div class="section-title">Руководители отдела</div>
-        <div class="section-list">
-          <div class="section-list-item">Богданенко Богдан Богданович - Senior quality assurance</div>
-          <div class="section-list-item">Петренко Пётр Петрович - HR-manager</div>
-        </div>
-      </div>
-      <div class="department-members">
-        <div class="section-title">Участники</div>
-        <table>
-          <thead>
-          <tr>
-            <td>ФИО</td>
-            <td>ЗАГРУЖЕННОСТЬ</td>
-            <td>ПРОЕКТЫ</td>
-            <td>НАВЫКИ</td>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>Богданенко Б.Б.</td>
-            <td class="loading">
-              <div class="indicator red"></div>
-              <span>Высокая</span>
-            </td>
-            <td>28</td>
-            <td>PL\SQL, MySQL</td>
-          </tr>
-          <tr>
-            <td>Петренко П.П.</td>
-            <td class="loading">
-              <div class="indicator yellow"></div>
-              <span>Средняя</span>
-            </td>
-            <td>13</td>
-            <td>HRIS, HRM</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="employee-info-popup popup">
-      <div class="close-btn">
-        <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <line x1="2.64645" y1="17.1551" x2="17.1551" y2="2.64644" stroke="black"/>
-          <line x1="3.35355" y1="2.64645" x2="17.8622" y2="17.1551" stroke="black"/>
-        </svg>
-      </div>
-      <div class="info-popup-title employee-info-popup-title">
-        <svg class="employee-icon" width="26" height="26" viewBox="0 0 26 26" fill="none"
-             xmlns="http://www.w3.org/2000/svg">
-          <circle cx="13" cy="13" r="12.5" stroke="black"/>
-          <path
-            d="M13 12C15.21 12 17 10.21 17 8C17 5.79 15.21 4 13 4C10.79 4 9 5.79 9 8C9 10.21 10.79 12 13 12ZM13 14C10.33 14 5 15.34 5 18V20H21V18C21 15.34 15.67 14 13 14Z"
-            fill="black"/>
-        </svg>
-        <span>Богданов Богдан Богданович</span>
-      </div>
-      <div class="common-info">
-        <div class="section-title">Общая информация</div>
-        <div class="section-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-          incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-          laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in.
-        </div>
-      </div>
-      <div class="projects">
-        <div class="section-title">Проекты</div>
-        <div class="section-list">
-          <div class="section-list-item">Crowd-Testing</div>
-          <div class="section-list-item">Pet-проект на GitHub</div>
-        </div>
-      </div>
-      <div class="skills">
-        <div class="section-title">Навыки</div>
-        <div class="section-list">
-          <div class="section-list-item">HTML&JSON</div>
-          <div class="section-list-item">Agile/SCRUM/Lean</div>
-          <div class="section-list-item">GoLang&php</div>
-          <div class="section-list-item">cookie & session</div>
-          <div class="section-list-item">Microservic Arhitecture</div>
-          <div class="section-list-item">GitLab, Docker</div>
-          <div class="section-list-item">PostgreSQL</div>
-        </div>
-      </div>
-      <div class="employee-loading">
-        <div class="section-title">
-          <span>Занятость</span>
-          <svg class="edit-btn" width="10" height="11" viewBox="0 0 10 11" fill="none"
-               xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" clip-rule="evenodd"
-                  d="M5.31918 0.211025C5.69419 -0.00136193 6.13821 -0.0560774 6.55356 0.0589151C6.73773 0.109901 6.89509 0.198722 7.04342 0.299045C7.1843 0.394323 7.3459 0.520471 7.53318 0.666671L7.56051 0.688003C7.74781 0.834201 7.90943 0.960347 8.03606 1.07388C8.16939 1.19342 8.29376 1.32452 8.38793 1.49079C8.60032 1.8658 8.65503 2.30982 8.54004 2.72518C8.48905 2.90934 8.40023 3.06671 8.29991 3.21504C8.20463 3.35592 8.07847 3.51753 7.93226 3.70483L4.08492 8.63362C4.0752 8.64608 4.0656 8.65839 4.05613 8.67053C3.8755 8.90213 3.73895 9.07721 3.56992 9.221C3.42684 9.34271 3.26854 9.4453 3.099 9.52619C2.89871 9.62175 2.68312 9.67488 2.39794 9.74516C2.38298 9.74885 2.36784 9.75258 2.3525 9.75637L1.20156 10.0405C1.12185 10.0602 1.03086 10.0827 0.950605 10.095C0.861138 10.1088 0.722587 10.1213 0.569567 10.0723C0.385616 10.0134 0.228666 9.89084 0.126864 9.72669C0.0421804 9.59015 0.0206328 9.45271 0.0122516 9.36259C0.00473277 9.28173 0.00446719 9.188 0.0042345 9.10589C0.00422011 9.10081 0.00420584 9.09577 0.00418998 9.09078L0.00046807 7.92041C0.000417801 7.9046 0.000361817 7.889 0.000306544 7.8736C-0.000747686 7.5799 -0.0015447 7.35785 0.0425303 7.14036C0.0798385 6.95625 0.14093 6.77779 0.224268 6.60944C0.322721 6.41056 0.459419 6.23558 0.640237 6.00413C0.649719 5.99199 0.659323 5.9797 0.669049 5.96724L4.51639 1.03845C4.66258 0.851143 4.78873 0.689528 4.90227 0.562893C5.02181 0.429562 5.1529 0.305195 5.31918 0.211025ZM6.26451 1.10297C6.12606 1.06464 5.97805 1.08288 5.85305 1.15368C5.83182 1.1657 5.79151 1.19391 5.70888 1.28607C5.62299 1.38187 5.51956 1.5139 5.3597 1.71869L7.06764 3.05188C7.2275 2.84709 7.33047 2.7147 7.40255 2.60812C7.4719 2.50558 7.48947 2.45964 7.49598 2.43612C7.53431 2.29767 7.51607 2.14967 7.44528 2.02466C7.43326 2.00343 7.40505 1.96313 7.31288 1.88049C7.21709 1.79461 7.08506 1.69117 6.88026 1.53132C6.67547 1.37146 6.54308 1.26849 6.43651 1.19641C6.33397 1.12706 6.28802 1.10948 6.26451 1.10297ZM6.40105 3.90585L4.69311 2.57266L1.52302 6.63384C1.30107 6.91818 1.23848 7.00254 1.19515 7.09006C1.15348 7.17423 1.12294 7.26347 1.10428 7.35552C1.08489 7.45123 1.08265 7.55625 1.0838 7.91696L1.08709 8.95291L2.09284 8.70461C2.44304 8.61815 2.54438 8.59049 2.63252 8.54844C2.71729 8.50799 2.79644 8.4567 2.86798 8.39584C2.94236 8.33256 3.009 8.25136 3.23096 7.96702L6.40105 3.90585ZM4.68333 9.63776C4.68333 9.3386 4.92584 9.09609 5.22499 9.09609H9.01666C9.31581 9.09609 9.55833 9.3386 9.55833 9.63776C9.55833 9.93691 9.31581 10.1794 9.01666 10.1794H5.22499C4.92584 10.1794 4.68333 9.93691 4.68333 9.63776Z"
-                  fill="black"/>
-          </svg>
-        </div>
-        <table>
-          <thead>
-          <tr>
-            <td>ПРОЕКТЫ</td>
-            <td>ФАКТИЧЕСКАЯ</td>
-            <td>ПЛАНИРУЕМАЯ</td>
-          </tr>
-          </thead>
-          <tbody>
-          <tr>
-            <td>73 всего</td>
-            <td>28 часов</td>
-            <td>43 часа</td>
-          </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
   </div>
+
   <div class="container main-container">
-    <div class="office-model"></div>
+    <div class="office-model">
+      <button class="person-info-btn" (click)="openPersonInfo()">
+        <div class="border">
+          <div class="circle"></div>
+        </div>
+      </button>
+      <div class="legend-block" id="legend">
+        <div class="legend-btn" (click)="openLegend()">
+          <div class="btn-icon" id="btn-icon">
+            <svg width="33" height="36" viewBox="0 0 33 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <line x1="1" y1="-1" x2="23.7588" y2="-1" transform="matrix(-0.686624 0.727013 0.727013 0.686624 33 1)"
+                    stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="-1" x2="23.6843" y2="-1" transform="matrix(0.688698 0.725049 0.725049 -0.688698 16 16.2)"
+                    stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="-1" x2="23.7588" y2="-1" transform="matrix(-0.686624 0.727013 0.727013 0.686624 19 1)"
+                    stroke="white" stroke-width="2" stroke-linecap="round"/>
+              <line x1="1" y1="-1" x2="23.6843" y2="-1" transform="matrix(0.688698 0.725049 0.725049 -0.688698 2 16.2)"
+                    stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
+          </div>
+        </div>
+        <div class="legend-popup popup">
+          <div class="info-popup-title">Легенда</div>
+          <div class="info-popup-list">
+            <div class="list-item" (click)="openDepartmentInfo()">
+              <div class="department-color red"></div>
+              <div class="department-name">Отдел разработки</div>
+            </div>
+            <div class="list-item">
+              <div class="department-color yellow"></div>
+              <div class="department-name">Отдел аналитики</div>
+            </div>
+            <div class="list-item">
+              <div class="department-color blue"></div>
+              <div class="department-name">Отдел тестирования</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
