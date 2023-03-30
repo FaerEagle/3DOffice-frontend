@@ -110,7 +110,7 @@
     </div>
   </div>
 
-  <div class="department-info-popup info-popup">
+  <!--<div class="department-info-popup info-popup">
     <div class="close-btn" (click)="closeDepartmentInfo()">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="2.64645" y1="17.1551" x2="17.1551" y2="2.64644" stroke="black"/>
@@ -168,7 +168,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div>-->
 
   <div class="popup-container" id="popup-container">
     <div class="login-popup popup" id="log-in-popup">
@@ -223,6 +223,7 @@
 
   <div class="container main-container">
     <div class="office-model">
+      <app-user [user]="user"></app-user>
       <button class="person-info-btn" (click)="openPersonInfo()">
         <div class="border">
           <div class="circle"></div>
@@ -246,18 +247,10 @@
         <div class="legend-popup popup">
           <div class="info-popup-title">Легенда</div>
           <div class="info-popup-list">
-            <div class="list-item" (click)="openDepartmentInfo()">
-              <div class="department-color red"></div>
-              <div class="department-name">Отдел разработки</div>
-            </div>
-            <div class="list-item">
-              <div class="department-color yellow"></div>
-              <div class="department-name">Отдел аналитики</div>
-            </div>
-            <div class="list-item">
-              <div class="department-color blue"></div>
-              <div class="department-name">Отдел тестирования</div>
-            </div>
+            <app-legend-department-item
+              *ngFor="let department of departments"
+              [department]="department"
+            ></app-legend-department-item>
           </div>
         </div>
       </div>

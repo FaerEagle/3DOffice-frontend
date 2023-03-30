@@ -1,17 +1,58 @@
-import {Component, HostListener} from '@angular/core';
+import {Component, HostListener, OnInit} from '@angular/core';
+import {FormBuilder, Validators} from '@angular/forms';
 import $ from 'jquery';
+import {IUser} from "./models/user";
+import {UsersService} from "./services/users.service";
+import {Observable, tap} from "rxjs";
+import {IProduct} from "./models/product";
+import {ProductsService} from "./services/products.service";
+import {IDepartment} from "./models/department";
+import {departments, departments as data} from "./data/departments";
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
+
+  departments: IDepartment[] = data
+  user$: Observable<IUser>
+  user: IUser
+
+
+  /*loading = false
+  products$: Observable<IProduct[]>
+  term = ''
+
+  constructor(private productsService: ProductsService) {
+  }
+
+  ngOnInit(): void {
+    this.loading = true
+    this.products$ = this.productsService.getAll().pipe(
+      tap(() => this.loading = false)
+    )
+    /!*this.productsService.getAll().subscribe((products => {
+      this.products = products
+      this.loading = false
+    }))*!/
+  }*/
+
+
+  constructor(private userService: UsersService) {
+  }
+
+  ngOnInit(): void {
+    // this.user$ = this.userService.getUser()
+    this.userService.getUser().subscribe(((user: IUser) => {
+      this.user = user
+    }))
+  }
+
   logIn() {
-    let window = document.getElementById('popup-container') as HTMLElement;
-    let headerButton = document.getElementById('quit-btn') as HTMLElement;
-    window.style.display = 'none';
-    headerButton.style.visibility = 'visible';
+    $('#popup-container').css('display', 'none');
+    $('#quit-btn').css('visibility', 'visible');
   }
 
   logOut() {
@@ -70,14 +111,16 @@ export class AppComponent {
   }
 
   openDepartmentInfo() {
+    let background = $('.department-info-container');
     $('.department-info-popup').addClass('active');
-    $('.department-info-container').css('background-color', 'rgba(0, 0, 0, 0.6)');
-    $('.department-info-container').addClass('active');
+    background.css('background-color', 'rgba(0, 0, 0, 0.6)');
+    background.addClass('active');
   }
 
   openPersonInfo() {
+    let background = $('.department-info-container');
     $('.employee-info-popup').addClass('active');
-    $('.department-info-container').css('background-color', 'rgba(0, 0, 0, 0.6)');
-    $('.department-info-container').addClass('active');
+    background.css('background-color', 'rgba(0, 0, 0, 0.6)');
+    background.addClass('active');
   }
 }

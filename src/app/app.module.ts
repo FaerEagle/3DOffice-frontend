@@ -3,14 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import {HttpClientModule} from "@angular/common/http";
+import {ProductComponent} from "./components/product/product.component";
+import {UserComponent} from "./components/user.component";
+import { LegendDepartmentItemComponent } from './components/legend-department-item/legend-department-item.component';
+import { LegendComponent } from './components/legend/legend.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    ProductComponent,
+    UserComponent,
+    LegendDepartmentItemComponent,
+    LegendComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
