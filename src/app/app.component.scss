@@ -390,27 +390,6 @@ table {
     width: 100%;
     height: 780px;
 
-    .person-info-btn {
-      position: absolute;
-      top: 435px;
-      left: 530px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      cursor: pointer;
-      background: transparent;
-      border: 2px solid #C22918;
-      .circle {
-        width: 15px;
-        height: 15px;
-        border-radius: 50%;
-        background: #EFF0F3;
-      }
-    }
-
     .legend-block {
       position: absolute;
       top: 30px;

@@ -1,4 +1,4 @@
-<div class="list-item" (click)="info = true">
+<!--<div class="list-item" (click)="info = true">
   <div class="department-color" [style.background-color]="department.color"></div>
   <div class="department-name">{{ department.name }}</div>
 </div>
@@ -56,6 +56,70 @@
           </ng-template>
           <td>{{ employee.projectMembership.length }}</td>
           <td>{{ employee.commonInfo.skillGrade }}</td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>-->
+
+
+<div class="list-item" (click)="info = true">
+  <div class="department-color"></div>
+  <div class="department-name">{{ department.nameDepartament }}</div>
+</div>
+
+<div *ngIf="info">
+  <div
+    class="department-info-container"
+    (click)="info = false"
+  ></div>
+
+  <div class="department-info-popup info-popup">
+    <div class="close-btn" (click)="info = false">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <line x1="2.64645" y1="17.1551" x2="17.1551" y2="2.64644" stroke="black"/>
+        <line x1="3.35355" y1="2.64645" x2="17.8622" y2="17.1551" stroke="black"/>
+      </svg>
+    </div>
+    <div class="info-popup-title department-info-popup-title">
+      <div class="department-color" ></div>
+      <div class="department-name">{{ department.nameDepartament }}</div>
+    </div>
+    <div class="common-info">
+      <div class="section-title">Общая информация</div>
+      <div class="section-text">{{ department.infoDepartament }}</div>
+    </div>
+    <div class="department-heads">
+      <div class="section-title">Руководитель отдела</div>
+      <div class="section-list">
+        <div class="section-list-item">{{ departmentHead.lastName + " " + departmentHead.firstName + " " + departmentHead.middleName }}</div>
+      </div>
+    </div>
+    <div class="department-members" *ngFor="let projects of department.projects; let i = index">
+      <div class="section-title">Участники {{ projects.nameProject }}</div>
+      <table>
+        <thead>
+        <tr>
+          <td>ФИО</td>
+          <td>ЗАГРУЖЕННОСТЬ</td>
+          <td>НАВЫКИ</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let employee of projects.employees; let j = index">
+          <td>{{ employee.employee.lastName + " " + employee.employee.firstName.charAt(0) + ". " + employee.employee.middleName.charAt(0) + "." }}</td>
+          <td class="loading">
+            <div class="indicator red"></div>
+            <span>Высокая</span>
+          </td>
+          <ng-template #medium>
+            <td class="loading">
+              <div class="indicator yellow"></div>
+              <span>Средняя</span>
+            </td>
+          </ng-template>
+          <td>{{ employee.employee.skills }}</td>
         </tr>
         </tbody>
       </table>

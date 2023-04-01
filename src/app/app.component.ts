@@ -8,6 +8,8 @@ import {IProduct} from "./models/product";
 import {ProductsService} from "./services/products.service";
 import {IDepartment} from "./models/department";
 import {departments, departments as data} from "./data/departments";
+import {IDepartmentInfo} from "./models/departmentInfo";
+import {IEmployeeInfo} from "./models/employeeInfo";
 
 @Component({
   selector: 'app-root',
@@ -16,6 +18,8 @@ import {departments, departments as data} from "./data/departments";
 })
 export class AppComponent implements OnInit{
 
+  departmentInfo: IDepartmentInfo
+  departmentHead: IEmployeeInfo
   departments: IDepartment[] = data
   user$: Observable<IUser>
   user: IUser
@@ -45,9 +49,16 @@ export class AppComponent implements OnInit{
 
   ngOnInit(): void {
     // this.user$ = this.userService.getUser()
-    this.userService.getUser().subscribe(((user: IUser) => {
+    /*this.userService.getUser().subscribe((user: IUser) => {
       this.user = user
-    }))
+    })*/
+
+    this.userService.getDepartment().subscribe((departmentInfo: IDepartmentInfo) => {
+      this.departmentInfo = departmentInfo
+      this.userService.getDepartmentHead(departmentInfo.id).subscribe((departmentHead: IEmployeeInfo) => {
+        this.departmentHead = departmentHead
+      })
+    })
   }
 
   logIn() {

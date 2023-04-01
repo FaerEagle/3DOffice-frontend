@@ -38,7 +38,8 @@
   <div class="department-info-container">
   </div>
 
-  <div class="employee-info-popup info-popup">
+
+  <!--<div class="employee-info-popup info-popup">
     <div class="close-btn" (click)="closePersonInfo()">
       <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
         <line x1="2.64645" y1="17.1551" x2="17.1551" y2="2.64644" stroke="black"/>
@@ -108,7 +109,7 @@
         </tbody>
       </table>
     </div>
-  </div>
+  </div>-->
 
   <!--<div class="department-info-popup info-popup">
     <div class="close-btn" (click)="closeDepartmentInfo()">
@@ -223,12 +224,7 @@
 
   <div class="container main-container">
     <div class="office-model">
-      <app-user [user]="user"></app-user>
-      <button class="person-info-btn" (click)="openPersonInfo()">
-        <div class="border">
-          <div class="circle"></div>
-        </div>
-      </button>
+      <app-map-employee-info></app-map-employee-info>
       <div class="legend-block" id="legend">
         <div class="legend-btn" (click)="openLegend()">
           <div class="btn-icon" id="btn-icon">
@@ -247,10 +243,11 @@
         <div class="legend-popup popup">
           <div class="info-popup-title">Легенда</div>
           <div class="info-popup-list">
-            <app-legend-department-item
+            <!--<app-legend-department-item
               *ngFor="let department of departments"
               [department]="department"
-            ></app-legend-department-item>
+            ></app-legend-department-item>-->
+            <app-legend-department-item [department]="departmentInfo" [departmentHead]="departmentHead"></app-legend-department-item>
           </div>
         </div>
       </div>
