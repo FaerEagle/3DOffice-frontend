@@ -65,7 +65,7 @@
 
 
 <div class="list-item" (click)="info = true">
-  <div class="department-color"></div>
+  <div class="department-color" [style.background]="'#A792FF'"></div>
   <div class="department-name">{{ department.nameDepartament }}</div>
 </div>
 
@@ -83,7 +83,7 @@
       </svg>
     </div>
     <div class="info-popup-title department-info-popup-title">
-      <div class="department-color" ></div>
+      <div class="department-color" [style.background]="'#A792FF'"></div>
       <div class="department-name">{{ department.nameDepartament }}</div>
     </div>
     <div class="common-info">

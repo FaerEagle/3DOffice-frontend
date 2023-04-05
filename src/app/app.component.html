@@ -176,15 +176,18 @@
       <div class="popup-title">Авторизация</div>
       <form action="">
         <div>
-          <input type="text" class="popup-input" placeholder="Имя">
+          <input type="text" class="popup-input" id="#name-input" value="" placeholder="Имя">
         </div>
         <div>
-          <input type="email" class="popup-input" placeholder="E-mail">
+          <input type="email" class="popup-input" id="#email-input" value="" placeholder="E-mail">
         </div>
         <div>
-          <input type="password" class="popup-input" placeholder="Пароль">
+          <input type="password" class="popup-input" id="#password-input" value="" placeholder="Пароль">
         </div>
         <button type="button" class="popup-btn login-btn btn" (click)="logIn()">Войти</button>
+        <div class="error-message" id="error-message">
+          Данные введены неверно
+        </div>
       </form>
       <a class="forgot-pass-link" (click)="forgotPass()">Забыли пароль?</a>
     </div>
@@ -224,7 +227,7 @@
 
   <div class="container main-container">
     <div class="office-model">
-      <app-map-employee-info></app-map-employee-info>
+      <app-map-employee-info [employee]="employee"></app-map-employee-info>
       <div class="legend-block" id="legend">
         <div class="legend-btn" (click)="openLegend()">
           <div class="btn-icon" id="btn-icon">

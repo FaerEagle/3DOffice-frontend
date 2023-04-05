@@ -9,4 +9,14 @@ export interface IEmployeeInfo {
     "degreeWorkLoad": string
   }
   "skills": string
+  "projects": [
+    {
+      "project": {
+        "nameProject": string,
+        "infoProject": string
+      },
+      "actualEmployment": number,
+      "plannedEmployment": number
+    }
+  ]
 }

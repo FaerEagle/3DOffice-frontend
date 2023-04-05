@@ -20,6 +20,7 @@ export class AppComponent implements OnInit{
 
   departmentInfo: IDepartmentInfo
   departmentHead: IEmployeeInfo
+  employee: IEmployeeInfo
   departments: IDepartment[] = data
   user$: Observable<IUser>
   user: IUser
@@ -55,15 +56,33 @@ export class AppComponent implements OnInit{
 
     this.userService.getDepartment().subscribe((departmentInfo: IDepartmentInfo) => {
       this.departmentInfo = departmentInfo
+      console.log(departmentInfo)
       this.userService.getDepartmentHead(departmentInfo.id).subscribe((departmentHead: IEmployeeInfo) => {
         this.departmentHead = departmentHead
       })
     })
+
+
+    this.userService.getEmployee().subscribe((employee: IEmployeeInfo) => {
+      this.employee = employee
+      /*let actualEmployment: number[] = []
+      console.log(employee)
+      for (let i = 0; i++; i < employee.projects.length) {
+        // @ts-reduce
+        actualEmployment.push(employee.projects[i].actualEmployment)
+      }
+      console.log(actualEmployment)
+      console.log(actualEmployment.reduce((accumulator, currentValue) => accumulator + currentValue));*/
+    })
+  }
+
+  getActualEmployment() {
+
   }
 
   logIn() {
-    $('#popup-container').css('display', 'none');
-    $('#quit-btn').css('visibility', 'visible');
+      $('#popup-container').css('display', 'none');
+      $('#quit-btn').css('visibility', 'visible');
   }
 
   logOut() {

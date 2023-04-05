@@ -326,6 +326,9 @@ table {
       border: 1px solid #9D9D9D;
       border-radius: 10px;
       outline: none;
+      &.error {
+        border-color: red;
+      }
 
       &::placeholder {
         color: #DFDFDF;
@@ -355,6 +358,13 @@ table {
         text-decoration: none;
         cursor: pointer;
       }
+    }
+
+    .error-message {
+      position: absolute;
+      color: red;
+      bottom: 88px;
+      display: none;
     }
 
     .recovery-popup {
