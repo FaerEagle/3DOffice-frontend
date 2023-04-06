@@ -9,6 +9,7 @@ export interface IEmployeeInfo {
     "degreeWorkLoad": string
   }
   "skills": string
+  "isDepartamentHead": boolean
   "projects": [
     {
       "project": {

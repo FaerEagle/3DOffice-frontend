@@ -65,7 +65,7 @@
 
 
 <div class="list-item" (click)="info = true">
-  <div class="department-color" [style.background]="'#A792FF'"></div>
+  <div class="department-color" [style.background]="department.colorDepartament"></div>
   <div class="department-name">{{ department.nameDepartament }}</div>
 </div>
 
@@ -83,17 +83,19 @@
       </svg>
     </div>
     <div class="info-popup-title department-info-popup-title">
-      <div class="department-color" [style.background]="'#A792FF'"></div>
+      <div class="department-color" [style.background]="department.colorDepartament"></div>
       <div class="department-name">{{ department.nameDepartament }}</div>
     </div>
     <div class="common-info">
       <div class="section-title">Общая информация</div>
       <div class="section-text">{{ department.infoDepartament }}</div>
     </div>
-    <div class="department-heads">
+    <div class="department-heads" *ngIf="department.projects">
       <div class="section-title">Руководитель отдела</div>
-      <div class="section-list">
-        <div class="section-list-item">{{ departmentHead.lastName + " " + departmentHead.firstName + " " + departmentHead.middleName }}</div>
+      <div *ngFor="let project of department.projects">
+        <div class="section-list" *ngFor="let employees of project.employees">
+          <div class="section-list-item" *ngIf="employees.employee.isDepartamentHead === true">{{ employees.employee.lastName + " " + employees.employee.firstName + " " + employees.employee.middleName }}</div>
+        </div>
       </div>
     </div>
     <div class="department-members" *ngFor="let projects of department.projects; let i = index">

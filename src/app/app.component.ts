@@ -18,7 +18,7 @@ import {IEmployeeInfo} from "./models/employeeInfo";
 })
 export class AppComponent implements OnInit{
 
-  departmentInfo: IDepartmentInfo
+  departmentInfo: IDepartmentInfo[]
   departmentHead: IEmployeeInfo
   employee: IEmployeeInfo
   departments: IDepartment[] = data
@@ -54,12 +54,11 @@ export class AppComponent implements OnInit{
       this.user = user
     })*/
 
-    this.userService.getDepartment().subscribe((departmentInfo: IDepartmentInfo) => {
-      this.departmentInfo = departmentInfo
-      console.log(departmentInfo)
-      this.userService.getDepartmentHead(departmentInfo.id).subscribe((departmentHead: IEmployeeInfo) => {
+    this.userService.getAllDepartments().subscribe((departmentsInfo: IDepartmentInfo[]) => {
+      this.departmentInfo = departmentsInfo
+      /*this.userService.getDepartmentHead(departmentsInfo.id).subscribe((departmentHead: IEmployeeInfo) => {
         this.departmentHead = departmentHead
-      })
+      })*/
     })
 
 
@@ -74,10 +73,6 @@ export class AppComponent implements OnInit{
       console.log(actualEmployment)
       console.log(actualEmployment.reduce((accumulator, currentValue) => accumulator + currentValue));*/
     })
-  }
-
-  getActualEmployment() {
-
   }
 
   logIn() {

@@ -250,7 +250,11 @@
               *ngFor="let department of departments"
               [department]="department"
             ></app-legend-department-item>-->
-            <app-legend-department-item [department]="departmentInfo" [departmentHead]="departmentHead"></app-legend-department-item>
+            <app-legend-department-item *ngFor="let department of departmentInfo;"
+                                        [department]="department"
+                                        [departmentHead]="departmentHead"
+
+            ></app-legend-department-item>
           </div>
         </div>
       </div>

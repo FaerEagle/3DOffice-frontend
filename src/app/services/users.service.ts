@@ -23,6 +23,10 @@ export class UsersService {
     return this.http.get<IDepartmentInfo>('https://localhost:7223/api/Departament/GetDepartamentInfo/1')
   }
 
+  getAllDepartments(): Observable<IDepartmentInfo[]> {
+    return this.http.get<IDepartmentInfo[]>('https://localhost:7223/api/Departament/GetAllDepartamentInfo')
+  }
+
   getDepartmentHead(departmentId: number): Observable<IEmployeeInfo> {
     return this.http.get<IEmployeeInfo>('https://localhost:7223/api/Departament/GetDepartamentHead/' + departmentId)
   }
