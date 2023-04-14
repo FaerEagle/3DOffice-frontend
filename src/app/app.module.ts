@@ -9,6 +9,7 @@ import {UserComponent} from "./components/user.component";
 import { LegendDepartmentItemComponent } from './components/legend-department-item/legend-department-item.component';
 import { LegendComponent } from './components/legend/legend.component';
 import { MapEmployeeInfoComponent } from './components/map-employee-info/map-employee-info.component';
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -19,11 +20,12 @@ import { MapEmployeeInfoComponent } from './components/map-employee-info/map-emp
     LegendComponent,
     MapEmployeeInfoComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        FormsModule
+    ],
   providers: [],
   bootstrap: [AppComponent]
 })
