@@ -83,7 +83,7 @@
       </svg>
     </div>
     <div class="info-popup-title department-info-popup-title">
-      <div class="department-color" [style.background]="department.colorDepartament"></div>
+      <div class="department-color" [style.background-color]="department.colorDepartament"></div>
       <div class="department-name">{{ department.nameDepartament }}</div>
     </div>
     <div class="common-info">
@@ -94,12 +94,13 @@
       <div class="section-title">Руководитель отдела</div>
       <div *ngFor="let project of department.projects">
         <div class="section-list" *ngFor="let employees of project.employees">
-          <div class="section-list-item" *ngIf="employees.employee.isDepartamentHead === true">{{ employees.employee.lastName + " " + employees.employee.firstName + " " + employees.employee.middleName }}</div>
+          <div class="section-list-item"
+               *ngIf="employees.employee.isDepartamentHead === true">{{ employees.employee.lastName + " " + employees.employee.firstName + " " + employees.employee.middleName }}</div>
         </div>
       </div>
     </div>
-    <div class="department-members" *ngFor="let projects of department.projects; let i = index">
-      <div class="section-title">Участники {{ projects.nameProject }}</div>
+    <div class="department-members">
+      <div class="section-title">Участники</div>
       <table>
         <thead>
         <tr>
@@ -108,19 +109,12 @@
           <td>НАВЫКИ</td>
         </tr>
         </thead>
-        <tbody>
-        <tr *ngFor="let employee of projects.employees; let j = index">
+        <tbody *ngFor="let projects of department.projects">
+        <tr *ngFor="let employee of projects.employees">
           <td>{{ employee.employee.lastName + " " + employee.employee.firstName.charAt(0) + ". " + employee.employee.middleName.charAt(0) + "." }}</td>
-          <td class="loading">
-            <div class="indicator red"></div>
-            <span>Высокая</span>
+          <td class="loading" *ngFor="let projects of department.projects">
+            <div>{{projects.nameProject}}</div>
           </td>
-          <ng-template #medium>
-            <td class="loading">
-              <div class="indicator yellow"></div>
-              <span>Средняя</span>
-            </td>
-          </ng-template>
           <td>{{ employee.employee.skills }}</td>
         </tr>
         </tbody>
