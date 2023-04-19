@@ -1,0 +1,111 @@
+* {
+  font-family: Circe, sans-serif;
+}
+
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.btn {
+  background: transparent;
+  text-align: center;
+  color: #C22918;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.popup-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .popup {
+    position: absolute;
+    top: calc(50% - 195px);
+    text-align: center;
+    background-color: #fff;
+    border: 1px solid #1D1D1D;
+    border-radius: 10px;
+  }
+
+  .popup-title {
+    font-size: 24px;
+    color: #1D1D1D;
+    padding-bottom: 10px;
+  }
+
+  .popup-input {
+    font-size: 16px;
+    color: #1D1D1D;
+    padding: 14px 25px;
+    margin: 10px 0;
+    border: 1px solid #9D9D9D;
+    border-radius: 10px;
+    outline: none;
+    &.error {
+      border-color: red;
+    }
+
+    &::placeholder {
+      color: #DFDFDF;
+    }
+  }
+
+  .popup-btn {
+    border: 1px solid #DFDFDF;
+    border-radius: 20px;
+    height: 50px;
+    margin-top: 20px;
+  }
+
+  .login-popup {
+    padding: 22px 62px 32px 62px;
+
+    .login-btn {
+      width: 120px;
+    }
+
+    .forgot-pass-link {
+      position: absolute;
+      bottom: 8px;
+      left: 11px;
+      font-size: 12px;
+      color: #8CAFE4;
+      text-decoration: none;
+      cursor: pointer;
+    }
+  }
+
+  .error-message {
+    position: absolute;
+    color: red;
+    bottom: 88px;
+    display: none;
+  }
+
+  .recovery-popup {
+    display: none;
+    padding: 26px 62px 20px 62px;
+
+    .back-btn {
+      position: absolute;
+      top: 14px;
+      left: 16px;
+      border: none;
+    }
+
+    .recovery-btn {
+      width: 140px;
+    }
+  }
+
+  .change-pass-popup {
+    display: none;
+    padding: 26px 62px 20px 62px;
+
+    .change-pass-btn {
+      width: 140px;
+    }
+  }
+}

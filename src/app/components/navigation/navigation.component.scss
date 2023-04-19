@@ -1,0 +1,33 @@
+.container {
+  margin: 0 auto;
+  max-width: 1200px;
+}
+
+.btn {
+  background: transparent;
+  text-align: center;
+  color: #C22918;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.header {
+  background: #EFF0F3;
+  padding: 25px 0;
+
+  .header-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .header-action {
+      .quit-btn {
+        border: 2px solid #C22918;
+        font-weight: bold;
+        width: 80px;
+        height: 40px;
+        border-radius: 10px;
+      }
+    }
+  }
+}
