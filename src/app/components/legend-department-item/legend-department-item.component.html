@@ -65,7 +65,7 @@
 
 
 <div class="list-item" (click)="info = true">
-  <div class="department-color" [style.background]="department.colorDepartament"></div>
+  <div class="department-color" [style.background]="department.colorDepartamemnt"></div>
   <div class="department-name">{{ department.nameDepartament }}</div>
 </div>
 
@@ -83,19 +83,19 @@
       </svg>
     </div>
     <div class="info-popup-title department-info-popup-title">
-      <div class="department-color" [style.background-color]="department.colorDepartament"></div>
+      <div class="department-color" [style.background-color]=department.colorDepartamemnt></div>
       <div class="department-name">{{ department.nameDepartament }}</div>
     </div>
     <div class="common-info">
       <div class="section-title">Общая информация</div>
       <div class="section-text">{{ department.infoDepartament }}</div>
     </div>
-    <div class="department-heads" *ngIf="department.projects">
+    <div class="department-heads">
       <div class="section-title">Руководитель отдела</div>
-      <div *ngFor="let project of department.projects">
-        <div class="section-list" *ngFor="let employees of project.employees">
+      <div *ngFor="let employees of department.employees">
+        <div class="section-list">
           <div class="section-list-item"
-               *ngIf="employees.employee.isDepartamentHead === true">{{ employees.employee.lastName + " " + employees.employee.firstName + " " + employees.employee.middleName }}</div>
+               *ngIf="employees.isDepartamentHead === true">{{ employees.lastName + " " + employees.firstName + " " + employees.middleName }}</div>
         </div>
       </div>
     </div>
@@ -109,13 +109,13 @@
           <td>НАВЫКИ</td>
         </tr>
         </thead>
-        <tbody *ngFor="let projects of department.projects">
-        <tr *ngFor="let employee of projects.employees">
-          <td>{{ employee.employee.lastName + " " + employee.employee.firstName.charAt(0) + ". " + employee.employee.middleName.charAt(0) + "." }}</td>
-          <td class="loading" *ngFor="let projects of department.projects">
-            <div>{{projects.nameProject}}</div>
+        <tbody>
+        <tr *ngFor="let employee of department.employees">
+          <td>{{ employee.lastName + " " + employee.firstName.charAt(0) + ". " + employee.middleName.charAt(0) + "." }}</td>
+          <td class="loading" *ngFor="let projects of employee.projects">
+            <div>{{projects.project.nameProject}}</div>
           </td>
-          <td>{{ employee.employee.skills }}</td>
+          <td>{{ employee.post }}</td>
         </tr>
         </tbody>
       </table>

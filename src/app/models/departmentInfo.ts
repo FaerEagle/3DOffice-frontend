@@ -1,10 +1,10 @@
-import {IProjectInfo} from "./projectsInfo";
+import {IEmployeeInfo} from "./employeeInfo";
 
 export interface IDepartmentInfo {
   "id": number
   "nameDepartament": string
   "infoDepartament": string
-  "colorDepartament": string
-  "projects": IProjectInfo[]
+  "colorDepartamemnt": string
+  "employees": IEmployeeInfo[]
 }
 

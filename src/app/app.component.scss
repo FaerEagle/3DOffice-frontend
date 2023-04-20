@@ -83,22 +83,6 @@ table {
     font-size: 14px;
   }
 
-  tbody {
-    tr {
-      background: #F0F0F0;
-
-      td:first-child {
-        border-bottom-left-radius: 15px;
-        border-top-left-radius: 15px;
-      }
-
-      td:last-child {
-        border-bottom-right-radius: 15px;
-        border-top-right-radius: 15px;
-      }
-    }
-  }
-
   tr {
     td {
       margin: 2px 0;
