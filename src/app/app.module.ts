@@ -13,6 +13,14 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { NavigationComponent } from './components/navigation/navigation.component';
 import { LoginPageComponent } from './pages/login-page/login-page.component';
 import { MainPageComponent } from './pages/main-page/main-page.component';
+import {AUTH_API_URL, OFFICE_API_URL} from "./app-injection-tokens";
+import {environment} from "../environments/environment";
+import {JwtModule} from "@auth0/angular-jwt";
+import {ACCESS_TOKEN_KEY} from "./services/login.service";
+
+export function tokenGetter() {
+  return localStorage.getItem(ACCESS_TOKEN_KEY);
+}
 
 @NgModule({
   declarations: [
@@ -31,9 +39,22 @@ import { MainPageComponent } from './pages/main-page/main-page.component';
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        JwtModule.forRoot({
+          config: {
+            tokenGetter,
+            allowedDomains: environment.tokenWhiteListedDomains
+          }
+        })
     ],
-  providers: [],
+  providers: [{
+    provide: AUTH_API_URL,
+    useValue: environment.authApi
+  },
+    {
+      provide: OFFICE_API_URL,
+      useValue: environment.officeApi
+    }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

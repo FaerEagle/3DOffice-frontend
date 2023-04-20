@@ -11,7 +11,7 @@
       <div>
         <input type="password" class="popup-input" id="password-input" value="" placeholder="Пароль" formControlName="password" #password>
       </div>
-      <button type="button" class="popup-btn login-btn btn" (click)="onSubmit()" [disabled]="!loginForm.valid">Войти</button>
+      <button type="button" class="popup-btn login-btn btn" (click)="appComponent.login(nameUser.value, email.value, password.value)" [disabled]="!loginForm.valid">Войти</button>
       <div class="error-message" id="error-message">
         Данные введены неверно
       </div>
