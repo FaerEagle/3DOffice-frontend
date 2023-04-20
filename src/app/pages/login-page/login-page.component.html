@@ -1,0 +1,53 @@
+<div class="popup-container" id="popup-container">
+  <div class="login-popup popup" id="log-in-popup">
+    <div class="popup-title">Авторизация</div>
+    <form action="" [formGroup]="loginForm">
+      <div>
+        <input type="text" class="popup-input" id="name-input" value="" placeholder="Имя" formControlName="nameUser" #nameUser>
+      </div>
+      <div>
+        <input type="email" class="popup-input" id="email-input" value="" placeholder="E-mail" formControlName="email" #email>
+      </div>
+      <div>
+        <input type="password" class="popup-input" id="password-input" value="" placeholder="Пароль" formControlName="password" #password>
+      </div>
+      <button type="button" class="popup-btn login-btn btn" (click)="onSubmit()" [disabled]="!loginForm.valid">Войти</button>
+      <div class="error-message" id="error-message">
+        Данные введены неверно
+      </div>
+    </form>
+    <a class="forgot-pass-link" (click)="forgotPass()">Забыли пароль?</a>
+  </div>
+
+  <div class="recovery-popup popup" id="recovery-popup">
+    <button type="button" class="back-btn btn" id="back-btn" (click)="backToLogIn()">
+      <svg width="30" height="30" viewBox="0 0 30 30" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M14.6339 6.61612C15.122 7.10427 15.122 7.89573 14.6339 8.38388L9.26777 13.75H23.75C24.4404 13.75 25 14.3096 25 15C25 15.6904 24.4404 16.25 23.75 16.25H9.26777L14.6339 21.6161C15.122 22.1043 15.122 22.8957 14.6339 23.3839C14.1457 23.872 13.3543 23.872 12.8661 23.3839L5.36612 15.8839C4.87796 15.3957 4.87796 14.6043 5.36612 14.1161L12.8661 6.61612C13.3543 6.12796 14.1457 6.12796 14.6339 6.61612Z"
+              fill="#0F1729"/>
+      </svg>
+    </button>
+    <div class="popup-title" id="recovery-title">Восстановление</div>
+    <form action="">
+      <div>
+        <input type="email" class="popup-input" id="recover-email-input" placeholder="E-mail">
+      </div>
+      <button type="button" class="popup-btn recovery-btn btn" id="send-on-email-btn" (click)="sendOnEmail()">
+        Отправить
+      </button>
+    </form>
+  </div>
+
+  <div class="change-pass-popup popup">
+    <div class="popup-title">Восстановление</div>
+    <form action="">
+      <div>
+        <input type="password" class="popup-input" placeholder="Новый пароль">
+      </div>
+      <div>
+        <input type="password" class="popup-input" placeholder="Повторите пароль">
+      </div>
+      <button type="button" class="popup-btn change-pass-btn btn">Изменить</button>
+    </form>
+  </div>
+</div>
