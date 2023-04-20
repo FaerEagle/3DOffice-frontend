@@ -1,4 +1,4 @@
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient} from "@angular/common/http";
 import {Injectable} from "@angular/core";
 import {Observable} from "rxjs";
 import {IUser} from "../models/user";
@@ -11,11 +11,9 @@ import {departments} from "../data/departments";
 })
 export class UsersService {
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
   ) {
   }
-
-  token = localStorage.getItem('token');
 
   getUser(): Observable<IUser> {
     return this.http.get<IUser>('https://localhost:7223/api/User/2')
