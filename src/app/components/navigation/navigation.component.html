@@ -27,8 +27,8 @@
         </svg>
       </a>
     </div>
-    <div class="header-action" *ngIf="isAuth()">
-      <button class="quit-btn btn" id="quit-btn" type="button" (click)="logout()">Выйти</button>
+    <div class="header-action" *ngIf="loginService.isAuth()">
+      <button class="quit-btn btn" id="quit-btn" type="button" (click)="loginService.logout()">Выйти</button>
     </div>
   </div>
 </header>
