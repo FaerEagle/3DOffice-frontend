@@ -11,7 +11,6 @@ import { LegendComponent } from './components/legend/legend.component';
 import { MapEmployeeInfoComponent } from './components/map-employee-info/map-employee-info.component';
 import {FormsModule} from "@angular/forms";
 
-// @ts-ignore
 @NgModule({
   declarations: [
     AppComponent,
