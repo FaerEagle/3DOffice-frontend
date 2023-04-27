@@ -1,12 +1,13 @@
 import {Inject, Injectable} from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpParams} from "@angular/common/http";
 import {Router} from "@angular/router";
 import {Observable, tap} from "rxjs";
 import {Token} from "../models/token";
 import {JwtHelperService} from "@auth0/angular-jwt";
 import {AUTH_API_URL} from "../app-injection-tokens";
 
-export const ACCESS_TOKEN_KEY = 'office_access_token'
+export const ACCESS_TOKEN_KEY = 'office_access_token';
+let inputValue: string;
 
 @Injectable({
   providedIn: 'root'
@@ -42,5 +43,22 @@ export class LoginService {
   logout(): void {
     localStorage.removeItem(ACCESS_TOKEN_KEY);
     this.router.navigate(['login']);
+  }
+
+  onKey(event: any) {
+    inputValue = event.target.value;
+  }
+
+  sendOnEmail() {
+    let email = inputValue;
+    console.log(email);
+    // email.replace("@", "%40");
+    let params = new HttpParams();
+    params = params.append('email', email);
+
+    return this.http.get(`https://localhost:7241/send-email`, {
+      params: params,
+      responseType: 'text'
+    });
   }
 }

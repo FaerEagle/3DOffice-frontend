@@ -30,9 +30,9 @@
     <div class="popup-title" id="recovery-title">Восстановление</div>
     <form action="">
       <div>
-        <input type="email" class="popup-input" id="recover-email-input" placeholder="E-mail">
+        <input type="email" class="popup-input" id="recover-email-input" placeholder="E-mail" (keyup)="loginService.onKey($event)" #email>
       </div>
-      <button type="button" class="popup-btn recovery-btn btn" id="send-on-email-btn" (click)="sendOnEmail()">
+      <button type="button" class="popup-btn recovery-btn btn" id="send-on-email-btn" (click)="appComponent.sendOnEmail()">
         Отправить
       </button>
     </form>

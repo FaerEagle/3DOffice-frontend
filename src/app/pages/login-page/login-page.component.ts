@@ -92,5 +92,4 @@ export class LoginPageComponent {
     emailInput.style.display = 'none';
     sendOnEmailBtn.style.display = 'none';
   }
-
 }
