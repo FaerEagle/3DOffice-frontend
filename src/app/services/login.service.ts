@@ -21,10 +21,6 @@ export class LoginService {
     @Inject(AUTH_API_URL) private apiUrl: string
   ) { }
 
-  /*login(data: any) {
-    return this.http.post('https://localhost:7241/login', data);
-  }*/
-
   login(nameUser: string, email: string, password: string):Observable<Token> {
     return this.http.post<Token>(`${this.apiUrl}login`, {
       nameUser, email, password

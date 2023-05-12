@@ -44,9 +44,9 @@
         </tr>
         </thead>
         <tbody>
-        <tr *ngFor="let employee of department.employees" (click)="mainPageComponent.goToEmployeeById(employeeId.value)">
+        <tr *ngFor="let employee of department.employees">
           <input class="employee-id" type="hidden" value="{{employee.id}}" #employeeId>
-          <td class="employee-name">
+          <td class="employee-name" (click)="mainPageComponent.goToEmployeeById(employeeId.value)">
             {{ employee.lastName + " " + employee.firstName.charAt(0) + ". " + employee.middleName.charAt(0) + "." }}
           </td>
           <td class="loading" *ngFor="let projects of employee.projects">

@@ -36,4 +36,8 @@ export class UsersService {
   goToEmployeeById(employeeId: string): Observable<IEmployeeInfo> {
     return this.http.get<IEmployeeInfo>('https://localhost:7223/api/Employee/GetEmployeeInfo/' + employeeId);
   }
+
+  changeEmployment(employeeId: string, projectId: string, plannedEmployment: string) {
+    return this.http.post('https://localhost:7223/api/Employee/GetEmployeeInfo/', {employeeId, projectId, plannedEmployment});
+  }
 }

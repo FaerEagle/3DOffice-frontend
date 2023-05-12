@@ -14,6 +14,9 @@ export class MapEmployeeInfoComponent {
   constructor(public mainPageComponent: MainPageComponent) {
   }
 
-  edit = false
+  numberOnly(event: any): boolean {
+    const charCode = (event.which) ? event.which : event.keyCode;
+    return !(charCode > 31 && (charCode < 48 || charCode > 57));
+  }
 
 }
