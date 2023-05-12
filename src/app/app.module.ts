@@ -4,10 +4,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import {HttpClientModule} from "@angular/common/http";
-import {ProductComponent} from "./components/product/product.component";
-import {UserComponent} from "./components/user.component";
 import { LegendDepartmentItemComponent } from './components/legend-department-item/legend-department-item.component';
-import { LegendComponent } from './components/legend/legend.component';
 import { MapEmployeeInfoComponent } from './components/map-employee-info/map-employee-info.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { LoginPageComponent } from './pages/login-page/login-page.component';
@@ -26,10 +23,7 @@ export function tokenGetter() {
 @NgModule({
   declarations: [
     AppComponent,
-    ProductComponent,
-    UserComponent,
     LegendDepartmentItemComponent,
-    LegendComponent,
     MapEmployeeInfoComponent,
     LoginPageComponent,
     MainPageComponent,

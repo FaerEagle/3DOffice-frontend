@@ -1,18 +1,6 @@
-import {Component, HostListener, OnInit} from '@angular/core';
-import {FormBuilder, Validators} from '@angular/forms';
-import $ from 'jquery';
-import {IUser} from "./models/user";
-import {UsersService} from "./services/users.service";
-import {Observable, tap} from "rxjs";
-import {IProduct} from "./models/product";
-import {ProductsService} from "./services/products.service";
-import {IDepartment} from "./models/department";
-import {departments, departments as data} from "./data/departments";
-import {IDepartmentInfo} from "./models/departmentInfo";
-import {IEmployeeInfo} from "./models/employeeInfo";
+import {Component} from '@angular/core';
 import {LoginService} from "./services/login.service";
 import {Router} from "@angular/router";
-import {routes} from "./app-routing.module";
 import {ChangePasswordService} from "./services/change-password.service";
 
 @Component({
@@ -30,7 +18,7 @@ export class AppComponent {
   }
 
   login(nameUser: string, email: string, password: string) {
-    this.as.loginN(nameUser, email, password)
+    this.as.login(nameUser, email, password)
       .subscribe(res => {
         this.router.navigate([''])
       }, error => {

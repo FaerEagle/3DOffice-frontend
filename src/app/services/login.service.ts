@@ -21,11 +21,11 @@ export class LoginService {
     @Inject(AUTH_API_URL) private apiUrl: string
   ) { }
 
-  login(data: any) {
+  /*login(data: any) {
     return this.http.post('https://localhost:7241/login', data);
-  }
+  }*/
 
-  loginN(nameUser: string, email: string, password: string): Observable<Token> {
+  login(nameUser: string, email: string, password: string):Observable<Token> {
     return this.http.post<Token>(`${this.apiUrl}login`, {
       nameUser, email, password
     }).pipe(
@@ -52,7 +52,6 @@ export class LoginService {
   sendOnEmail() {
     let email = inputValue;
     console.log(email);
-    // email.replace("@", "%40");
     let params = new HttpParams();
     params = params.append('email', email);
 

@@ -3,10 +3,9 @@ import {IDepartmentInfo} from "../../models/departmentInfo";
 import {IEmployeeInfo} from "../../models/employeeInfo";
 import {IDepartment} from "../../models/department";
 import {departments as data} from "../../data/departments";
-import {Observable} from "rxjs";
-import {IUser} from "../../models/user";
 import {UsersService} from "../../services/users.service";
 import $ from "jquery";
+import {LegendDepartmentItemComponent} from "../../components/legend-department-item/legend-department-item.component";
 
 @Component({
   selector: 'app-main-page',
@@ -19,37 +18,12 @@ export class MainPageComponent implements OnInit{
   departmentHead: IEmployeeInfo
   employee: IEmployeeInfo
   departments: IDepartment[] = data
-  user$: Observable<IUser>
-  user: IUser
-
-
-  /*loading = false
-  products$: Observable<IProduct[]>
-  term = ''
-
-  constructor(private productsService: ProductsService) {
-  }
-
-  ngOnInit(): void {
-    this.loading = true
-    this.products$ = this.productsService.getAll().pipe(
-      tap(() => this.loading = false)
-    )
-    /!*this.productsService.getAll().subscribe((products => {
-      this.products = products
-      this.loading = false
-    }))*!/
-  }*/
-
+  isEmployeeInfoOpened = false
 
   constructor(private userService: UsersService) {
   }
 
   ngOnInit(): void {
-    // this.user$ = this.userService.getUser()
-    /*this.userService.getUser().subscribe((user: IUser) => {
-      this.user = user
-    })*/
 
     this.userService.getAllDepartments().subscribe((departmentsInfo: IDepartmentInfo[]) => {
       this.departmentInfo = departmentsInfo
@@ -72,7 +46,19 @@ export class MainPageComponent implements OnInit{
     })
   }
 
-  closeDepartmentInfo() {
+  goToEmployeeById(employeeId: string) {
+    this.userService.goToEmployeeById(employeeId).subscribe((employee: IEmployeeInfo) => {
+      this.employee = employee
+      this.isEmployeeInfoOpened = true
+    })
+  }
+
+  openLegend() {
+    $('#legend').toggleClass('active');
+    $('#btn-icon').toggleClass('active');
+  }
+
+  /*closeDepartmentInfo() {
     $('.department-info-popup').removeClass('active');
     $('.department-info-container').css('background-color', 'rgba(0, 0, 0, 0)');
     setTimeout(() => {
@@ -88,11 +74,6 @@ export class MainPageComponent implements OnInit{
     },1000);
   }
 
-  openLegend() {
-    $('#legend').toggleClass('active');
-    $('#btn-icon').toggleClass('active');
-  }
-
   openDepartmentInfo() {
     let background = $('.department-info-container');
     $('.department-info-popup').addClass('active');
@@ -105,6 +86,6 @@ export class MainPageComponent implements OnInit{
     $('.employee-info-popup').addClass('active');
     background.css('background-color', 'rgba(0, 0, 0, 0.6)');
     background.addClass('active');
-  }
+  }*/
 
 }

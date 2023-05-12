@@ -1,10 +1,4 @@
-.department-color {
-  width: 20px;
-  height: 20px;
-  border: 1px solid #000;
-  border-radius: 50%;
-  margin-right: 10px;
-}
+@import "src/app/app.component";
 
 .list-item {
   display: flex;
@@ -18,62 +12,41 @@
     background: rgba(0, 0, 0, 0.06);
     cursor: pointer;
   }
-
-  .department-name {
-    font-size: 14px;
-  }
-}
-
-.info-popup-title {
-  font-size: 16px;
-  color: #1D1D1D;
-  font-weight: bold;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #000;
-}
-
-.department-name {
-  font-size: 14px;
-}
-
-.close-btn {
-  position: absolute;
-  top: 10px;
-  right: 13px;
-  cursor: pointer;
-}
-
-.section-title {
-  font-weight: 700;
-  font-size: 20px;
-  margin: 20px 0 10px 0;
-}
-
-.section-text {
-  font-size: 18px;
-}
-
-.section-list {
-  .section-list-item {
-    font-size: 18px;
-    border-radius: 15px;
-    padding: 0 10px;
-    display: inline-block;
-  }
 }
 
 table {
   margin: 0 auto;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1;
   border-collapse: collapse;
+  width: 100%;
+
+  thead, tbody {
+    tr {
+      td {
+        margin: 2px 0;
+        padding: 3px 10px;
+      }
+    }
+  }
 
   thead {
-    font-size: 14px;
+    font-size: 18px;
   }
 
   tbody {
     tr {
+      td {
+        &.employee-name {
+          cursor: pointer;
+          border-right: 1px solid #777474;
+        }
+        &.loading {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
       background: #F0F0F0;
 
       &:first-child {
@@ -107,46 +80,6 @@ table {
       }
     }
   }
-
-  tr {
-    td {
-      margin: 2px 0;
-      padding: 3px 10px;
-    }
-  }
-}
-
-.department-info-container {
-  display: flex;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0.5);
-  transition: background-color 1s linear;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9;
-  &.active {
-    visibility: visible;
-  }
-}
-
-.info-popup {
-  z-index: 10;
-  position: fixed;
-  top: 0;
-  right: 0;
-  transition: right 1s ease-in-out;
-  height: 100%;
-  text-align: center;
-  background-color: #fff;
-  max-width: 510px;
-  padding: 20px 30px;
-  box-sizing: border-box;
-
-  &.active {
-    right: 0;
-  }
 }
 
 .department-info-popup {
@@ -167,40 +100,5 @@ table {
         background: rgba(255, 128, 128, 0.59);
       }
     }
-  }
-
-  table {
-    tbody {
-      tr {
-        &:hover {
-          background: #F0F0F0;
-        }
-      }
-    }
-
-    tr {
-      td {
-        &.loading {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-      }
-    }
-  }
-}
-
-.indicator {
-  width: 7px;
-  height: 7px;
-  margin-right: 2px;
-  border-radius: 50%;
-
-  &.red {
-    background: #FF0000;
-  }
-
-  &.yellow {
-    background: #FF9900;
   }
 }

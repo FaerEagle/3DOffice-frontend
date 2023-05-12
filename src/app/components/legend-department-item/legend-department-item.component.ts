@@ -3,6 +3,8 @@ import {IDepartment} from "../../models/department";
 import {LegendDepartmentItemsService} from "../../services/legend-department-items.service";
 import {IDepartmentInfo} from "../../models/departmentInfo";
 import {IEmployeeInfo} from "../../models/employeeInfo";
+import {UsersService} from "../../services/users.service";
+import {MainPageComponent} from "../../pages/main-page/main-page.component";
 
 @Component({
   selector: 'app-legend-department-item',
@@ -15,7 +17,8 @@ export class LegendDepartmentItemComponent {
   @Input() departmentHead: IEmployeeInfo
 
   info = false
+  employee: IEmployeeInfo
 
-  constructor(public legendDepartmentItemsService: LegendDepartmentItemsService) {
+  constructor(public legendDepartmentItemsService: LegendDepartmentItemsService, public mainPageComponent: MainPageComponent) {
   }
 }

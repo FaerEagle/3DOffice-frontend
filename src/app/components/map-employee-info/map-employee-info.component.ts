@@ -1,6 +1,7 @@
 import {Component, Input} from '@angular/core';
-import {LegendDepartmentItemsService} from "../../services/legend-department-items.service";
 import {IEmployeeInfo} from "../../models/employeeInfo";
+import {LegendDepartmentItemComponent} from "../legend-department-item/legend-department-item.component";
+import {MainPageComponent} from "../../pages/main-page/main-page.component";
 
 @Component({
   selector: 'app-map-employee-info',
@@ -10,9 +11,9 @@ import {IEmployeeInfo} from "../../models/employeeInfo";
 export class MapEmployeeInfoComponent {
   @Input() employee: IEmployeeInfo
 
-  constructor(public mapEmployeeInfoService: LegendDepartmentItemsService) {
+  constructor(public mainPageComponent: MainPageComponent) {
   }
 
-  info = false
+  edit = false
 
 }

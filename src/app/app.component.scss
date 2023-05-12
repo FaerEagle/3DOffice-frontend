@@ -15,23 +15,41 @@
   cursor: pointer;
 }
 
+.department-info-container {
+  display: flex;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.5);
+  transition: background-color 1s linear;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 9;
+}
+
 .department-color {
   width: 20px;
   height: 20px;
   border: 1px solid #000;
   border-radius: 50%;
   margin-right: 10px;
+}
 
-  &.red {
-    background: #FF8080;
-  }
+.info-popup {
+  z-index: 10;
+  position: fixed;
+  top: 0;
+  right: 0;
+  transition: right 1s ease-in-out;
+  height: 100%;
+  text-align: center;
+  background-color: #fff;
+  width: 600px;
+  padding: 20px 30px;
+  box-sizing: border-box;
 
-  &.yellow {
-    background: #FCFF73;
-  }
-
-  &.blue {
-    background: #A792FF;
+  &.active {
+    right: 0;
   }
 }
 
@@ -70,357 +88,5 @@
     border-radius: 15px;
     padding: 0 10px;
     display: inline-block;
-  }
-}
-
-table {
-  margin: 0 auto;
-  font-size: 12px;
-  line-height: 1;
-  border-collapse: collapse;
-
-  thead {
-    font-size: 14px;
-  }
-
-  tr {
-    td {
-      margin: 2px 0;
-      padding: 3px 10px;
-    }
-  }
-}
-
-.department-info-container {
-  visibility: hidden;
-  display: flex;
-  position: fixed;
-  background-color: rgba(0, 0, 0, 0);
-  transition: background-color 1s linear;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 9;
-  &.active {
-    visibility: visible;
-  }
-}
-
-.info-popup {
-  z-index: 10;
-  position: fixed;
-  top: 0;
-  right: -510px;
-  transition: right 1s ease-in-out;
-  height: 100%;
-  text-align: center;
-  background-color: #fff;
-  max-width: 510px;
-  padding: 20px 30px;
-  box-sizing: border-box;
-
-  &.active {
-    right: 0;
-  }
-}
-
-.employee-info-popup {
-  .employee-info-popup-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .employee-icon {
-      margin-right: 15px;
-    }
-
-    .employee-name {
-      font-size: 24px;
-      line-height: 1;
-    }
-  }
-
-  .projects {
-    .section-list {
-      .section-list-item {
-        &:hover {
-          background: #F0F0F0;
-          cursor: pointer;
-        }
-      }
-    }
-  }
-
-  .skills {
-    .section-list {
-      background: #F0F0F0;
-      border-radius: 15px;
-    }
-  }
-
-  .employee-loading {
-    .section-title {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-
-      .edit-btn {
-        margin-left: 5px;
-        cursor: pointer;
-        width: 15px;
-        height: 15px;
-      }
-    }
-    table {
-      margin: 0 auto;
-      font-size: 16px;
-      line-height: 1;
-      border-collapse: collapse;
-
-      thead {
-        font-size: 18px;
-      }
-    }
-  }
-}
-
-.department-info-popup {
-  .department-info-popup-title {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    .department-name {
-      font-size: 24px;
-      line-height: 1;
-    }
-  }
-
-  .section-list {
-    .section-list-item {
-      &:hover {
-        background: rgba(255, 128, 128, 0.59);
-      }
-    }
-  }
-
-  table {
-    tbody {
-      tr {
-        td:first-child {
-          border-bottom-left-radius: 15px;
-          border-top-left-radius: 15px;
-        }
-
-        td:last-child {
-          border-bottom-right-radius: 15px;
-          border-top-right-radius: 15px;
-        }
-
-        &:hover {
-          background: #F0F0F0;
-        }
-      }
-    }
-
-    tr {
-      td {
-        &.loading {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-        }
-
-        .indicator {
-          width: 7px;
-          height: 7px;
-          margin-right: 2px;
-          border-radius: 50%;
-
-          &.red {
-            background: #FF0000;
-          }
-
-          &.yellow {
-            background: #FF9900;
-          }
-        }
-      }
-    }
-  }
-}
-
-.main {
-  padding: 50px 0 160px;
-
-  .popup-container {
-    display: flex;
-    position: fixed;
-    background-color: rgba(0, 0, 0, 0.6);
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 999999;
-    align-items: center;
-    justify-content: center;
-
-    .popup {
-      position: relative;
-      text-align: center;
-      background-color: #fff;
-      border: 1px solid #1D1D1D;
-      border-radius: 10px;
-    }
-
-    .popup-title {
-      font-size: 24px;
-      color: #1D1D1D;
-      padding-bottom: 10px;
-    }
-
-    .popup-input {
-      font-size: 16px;
-      color: #1D1D1D;
-      padding: 14px 25px;
-      margin: 10px 0;
-      border: 1px solid #9D9D9D;
-      border-radius: 10px;
-      outline: none;
-      &.error {
-        border-color: red;
-      }
-
-      &::placeholder {
-        color: #DFDFDF;
-      }
-    }
-
-    .popup-btn {
-      border: 1px solid #DFDFDF;
-      border-radius: 20px;
-      height: 50px;
-      margin-top: 20px;
-    }
-
-    .login-popup {
-      padding: 22px 62px 32px 62px;
-
-      .login-btn {
-        width: 120px;
-      }
-
-      .forgot-pass-link {
-        position: absolute;
-        bottom: 8px;
-        left: 11px;
-        font-size: 12px;
-        color: #8CAFE4;
-        text-decoration: none;
-        cursor: pointer;
-      }
-    }
-
-    .error-message {
-      position: absolute;
-      color: red;
-      bottom: 88px;
-      display: none;
-    }
-
-    .recovery-popup {
-      display: none;
-      padding: 26px 62px 20px 62px;
-
-      .back-btn {
-        position: absolute;
-        top: 14px;
-        left: 16px;
-        border: none;
-      }
-
-      .recovery-btn {
-        width: 140px;
-      }
-    }
-
-    .change-pass-popup {
-      display: none;
-      padding: 26px 62px 20px 62px;
-
-      .change-pass-btn {
-        width: 140px;
-      }
-    }
-  }
-
-  .office-model {
-    position: relative;
-    overflow: hidden;
-    background: url("../assets/images/model.png");
-    width: 100%;
-    height: 780px;
-
-    .legend-block {
-      position: absolute;
-      top: 30px;
-      right: -290px;
-      transition: right 1s ease-in-out;
-
-      &.active {
-        right: 0;
-      }
-
-      .legend-btn {
-        position: absolute;
-        top: 30px;
-        left: -59px;
-        background: #C22918;
-        border-top-left-radius: 30px;
-        border-bottom-left-radius: 30px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 60px;
-        height: 60px;
-        cursor: pointer;
-
-        .btn-icon {
-          width: 33px;
-          height: 36px;
-
-          &.active {
-            transform: rotate(180deg);
-          }
-        }
-      }
-
-      .legend-popup {
-        text-align: center;
-        background-color: #fff;
-        border: 1px solid #1D1D1D;
-        border-radius: 10px 0 0 10px;
-        padding: 10px 15px;
-
-        .info-popup-list {
-          padding: 14px 0;
-
-          .list-item {
-            display: flex;
-            justify-content: left;
-            align-items: center;
-            padding: 6px 9px;
-            width: 240px;
-            border-radius: 15px;
-
-            &:hover {
-              background: rgba(0, 0, 0, 0.06);
-              cursor: pointer;
-            }
-          }
-        }
-      }
-    }
   }
 }
